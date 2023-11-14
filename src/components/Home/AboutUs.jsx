@@ -13,7 +13,7 @@ export default function AboutUs() {
     <Box className="bg-sky-50">
       <Box className="w-4/5 p-10 mx-auto flex justify-center items-center">
         <Typography data-aos="fade-right" variant="h2" color="text.primary">
-          Karena Rasa Tak Pernah Bohong
+          Karena Rasa tak Pernah Bohong
         </Typography>
         <Box data-aos="fade-left">
           <Avatar
