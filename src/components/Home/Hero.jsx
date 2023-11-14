@@ -18,13 +18,11 @@ const jumbotron = {
 
 export default function Hero() {
   useEffect(() => {
-    AOS.init(
-      {
-        duration: 900,
-      },
-      []
-    );
-  });
+    AOS.init({
+      duration: 900,
+      once: false,
+    });
+  }, []);
   return (
     <Box className="flex justify-center items-center" style={jumbotron}>
       <Box className="flex justify-between items-center w-4/5">
@@ -40,7 +38,7 @@ export default function Hero() {
             Nikmati pengalaman kuliner terbaik dengan menu kami yang lezat.
           </Typography>
         </Box>
-        <Box data-aos="fade-left">
+        <Box data-aos="fade-left" data-aos-once="false">
           <Avatar src={chef} sx={{ height: "400px", width: "400px" }} />
         </Box>
       </Box>
