@@ -12,10 +12,29 @@ export const useCartStore = create(
   persist(
     (set, get) => ({
       cart: [],
-      addToCart: (item) => set((state) => ({ cart: [...state.cart, item] })),
+      addToCart: (item, kuantitas) => {
+        const existingItemIndex = get().cart.findIndex(
+          (i) => i.id_menu === item.id_menu
+        );
+
+        if (existingItemIndex !== -1) {
+          set((state) => {
+            const updatedCart = [...state.cart];
+            updatedCart[existingItemIndex] = {
+              ...updatedCart[existingItemIndex],
+              kuantitas: updatedCart[existingItemIndex].kuantitas + kuantitas,
+            };
+            return { cart: updatedCart };
+          });
+        } else {
+          set((state) => ({
+            cart: [...state.cart, { ...item, kuantitas }],
+          }));
+        }
+      },
       removeFromCart: (item) =>
         set((state) => ({
-          cart: state.cart.filter((i) => i.id !== item.id_menu),
+          cart: state.cart.filter((i) => i.id_menu !== item.id_menu),
         })),
       clearCart: () => set({ cart: [] }),
       cartTotal: () =>
