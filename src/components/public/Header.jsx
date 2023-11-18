@@ -101,6 +101,13 @@ export default function Header() {
             >
               Tentang Kami
             </Typography>
+            <Typography
+              className="p-1 border-b-2 border-sky-500 cursor-pointer"
+              component="a"
+              onClick={() => navigate("/cart")}
+            >
+              Cart
+            </Typography>
             <Button variant="contained">Pesanan</Button>
           </Box>
         </Box>
