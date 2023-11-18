@@ -106,7 +106,7 @@ export default function Header() {
               component="a"
               onClick={() => navigate("/cart")}
             >
-              Cart
+              Keranjang
             </Typography>
             <Button variant="contained">Pesanan</Button>
           </Box>

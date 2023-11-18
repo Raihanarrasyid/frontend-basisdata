@@ -13,6 +13,10 @@ export default function Cart() {
   const [cartItems, setCartItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const totalHarga = cartItems.reduce(
+    (total, item) => total + item.harga * item.kuantitas,
+    0
+  );
 
   useEffect(() => {
     Aos.init({
@@ -27,7 +31,6 @@ export default function Cart() {
 
   const handleRemoveFromCart = (item) => {
     cart.removeFromCart(item);
-    // Setelah menghapus item, atur refresh menjadi nilai sebaliknya untuk memperbarui tampilan
     setRefresh((prevRefresh) => !prevRefresh);
   };
 
@@ -45,43 +48,54 @@ export default function Cart() {
         </>
       ) : (
         <>
-          <Box>
+          <Box className="w-4/5 mx-auto text-white">
             <Typography
               data-aos="fade"
               variant="h2"
               className="text-white text-center my-5"
             >
-              Cart
+              Keranjang
             </Typography>
+            <Box className="flex justify-between">
+              <Typography variant="h6">
+                Total Harga: Rp {totalHarga.toLocaleString()}
+              </Typography>
+              <Button
+                variant="contained"
+                color="success"
+                onClick={() => navigate("/order")}
+              >
+                Checkout
+              </Button>
+            </Box>
           </Box>
           <Box>
             {cartItems.length !== 0 ? (
-              <Box className="flex flex-col gap-5 text-black">
+              <Box className="my-5 flex gap-5 text-black flex-wrap w-4/5 mx-auto">
                 {cartItems.map((item, index) => (
                   <div
+                    className="bg-slate-50 card card-compact w-96 shadow-xl"
                     key={index}
-                    className="card card-side shadow-xl bg-sky-100 w-4/5 mx-auto"
                     data-aos="zoom-in"
                   >
                     <figure>
                       <img
+                        className="h-52 w-full object-cover"
                         src={item.linkFoto}
-                        alt="Makanan"
-                        className="object-cover w-96 h-52"
+                        alt={item.nama_menu}
                       />
                     </figure>
                     <div className="card-body">
                       <h2 className="card-title">{item.nama_menu}</h2>
-                      <p>{item.deskripsi}</p>
-                      <p>Jumlah: {item.kuantitas}</p>
+                      <p>Total makanan: {item.kuantitas}</p>
+                      <p>Harga Satuan: Rp. {item.harga.toLocaleString()}</p>
                       <div className="card-actions justify-end">
-                        <Button
-                          variant="contained"
-                          color="error"
-                          onClick={() => handleRemoveFromCart(item)}
+                        <button
+                          onClick={() => cart.removeFromCart(item)}
+                          className="btn btn-error"
                         >
                           Hapus
-                        </Button>
+                        </button>
                       </div>
                     </div>
                   </div>
