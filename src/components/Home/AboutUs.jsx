@@ -1,14 +1,8 @@
 import { Avatar, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import React, { useEffect } from "react";
-import Aos from "aos";
 
 export default function AboutUs() {
-  useEffect(() => {
-    Aos.init({
-      duration: 900,
-    });
-  }, []);
   return (
     <Box className="bg-sky-50">
       <Box className="w-4/5 p-10 mx-auto flex justify-center items-center">

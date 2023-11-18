@@ -4,8 +4,6 @@ import { useEffect } from "react";
 import backgroundImage from "../../assets/background.webp"; // Ganti dengan path gambar Anda
 import { Avatar } from "@mui/material";
 import chef from "../../assets/chef.jpg";
-import AOS from "aos";
-import "aos/dist/aos.css";
 
 const jumbotron = {
   background: `url(${backgroundImage})`,
@@ -17,12 +15,6 @@ const jumbotron = {
 };
 
 export default function Hero() {
-  useEffect(() => {
-    AOS.init({
-      duration: 900,
-      once: false,
-    });
-  }, []);
   return (
     <Box className="flex justify-center items-center" style={jumbotron}>
       <Box className="flex justify-between items-center w-4/5">
