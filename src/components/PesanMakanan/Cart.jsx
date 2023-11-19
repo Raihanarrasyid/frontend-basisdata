@@ -6,17 +6,35 @@ import { useCartStore } from "../../stores/appStore";
 import { useState } from "react";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import Snackbar from "@mui/material/Snackbar";
+import SnackbarContent from "@mui/material/SnackbarContent";
+import IconButton from "@mui/material/IconButton";
+import Close from "@mui/icons-material/Close";
 
 export default function Cart() {
   const [refresh, setRefresh] = useState(false);
   const cart = useCartStore();
   const [cartItems, setCartItems] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [toastOpen, setToastOpen] = useState(false);
+  const [toastMessage, setToastMessage] = useState("");
   const navigate = useNavigate();
   const totalHarga = cartItems.reduce(
     (total, item) => total + item.harga * item.kuantitas,
     0
   );
+  const handleCheckout = () => {
+    if (cartItems.length !== 0) {
+      navigate("/form");
+    } else {
+      setToastMessage("Keranjang masih kosong");
+      setToastOpen(true);
+      setTimeout(() => {
+        setToastOpen(false);
+        navigate("/order");
+      }, 2000);
+    }
+  };
 
   useEffect(() => {
     Aos.init({
@@ -48,6 +66,26 @@ export default function Cart() {
         </>
       ) : (
         <>
+          <Snackbar
+            open={toastOpen}
+            autoHideDuration={2000}
+            onClose={() => setToastOpen(false)}
+          >
+            <SnackbarContent
+              message={toastMessage}
+              style={{ backgroundColor: "#cf001c" }} // Atur latar belakang menjadi merah
+              action={
+                <IconButton
+                  size="small"
+                  aria-label="close"
+                  color="inherit"
+                  onClick={() => setToastOpen(false)}
+                >
+                  <Close fontSize="small" />
+                </IconButton>
+              }
+            />
+          </Snackbar>
           <Box className="w-4/5 mx-auto text-white">
             <Typography
               data-aos="fade"
@@ -63,7 +101,7 @@ export default function Cart() {
               <Button
                 variant="contained"
                 color="success"
-                onClick={() => navigate("/order")}
+                onClick={handleCheckout}
               >
                 Checkout
               </Button>

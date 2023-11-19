@@ -13,6 +13,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import DetailMakanan from "./components/PesanMakanan/DetailMakanan";
 import Cart from "./components/PesanMakanan/Cart";
+import FormPesanan from "./components/Form/FormPesanan";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/order" element={<PesanMakanan />} />
           <Route path="/order/:menuId" element={<DetailMakanan />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/form" element={<FormPesanan />} />
           <Route path="*" element={<h1>Not Found</h1>} />
         </Routes>
       </BrowserRouter>
