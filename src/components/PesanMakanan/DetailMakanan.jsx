@@ -45,7 +45,7 @@ export default function DetailMakanan() {
               <Box flex="1 1 40%" mb="40px">
                 <img
                   alt={item?.nama_menu}
-                  className="w-full h-full rounded-lg"
+                  className="w-full h-full rounded-lg shadow-lg"
                   style={{ objectFit: "cover" }}
                   src={item?.linkFoto}
                 />
@@ -103,6 +103,13 @@ export default function DetailMakanan() {
               </Box>
             </Box>
             <Box display="flex" flexWrap="wrap" gap="15px">
+              <hr
+                style={{
+                  borderTop: "2px solid black",
+                  width: "100%",
+                  margin: "10px 0",
+                }}
+              />
               <div style={{ flex: "1", flexGrow: "1", whiteSpace: "pre" }}>
                 {item.deskripsi}
               </div>
