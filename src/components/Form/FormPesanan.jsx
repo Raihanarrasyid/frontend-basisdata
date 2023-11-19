@@ -1,6 +1,7 @@
 import { Typography, TextField, Button, Box, Grid } from "@mui/material";
 import { styled } from "@mui/system";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import Aos from "aos";
 
 const CustomTextField = styled(TextField)(({ theme }) => ({
   marginBottom: "1.5rem",
@@ -54,9 +55,18 @@ export default function FormPesanan() {
     });
   };
 
+  useEffect(() => {
+    Aos.init({
+      duration: 900,
+    });
+  }, []);
+
   return (
     <Box className="h-screen" sx={{ p: 4 }}>
-      <Box sx={{ display: "flex", justifyContent: "center", mb: 5 }}>
+      <Box
+        sx={{ display: "flex", justifyContent: "center", mb: 5 }}
+        data-aos="zoom-in"
+      >
         <Typography
           variant="h2"
           sx={{ color: "white", textAlign: "center", my: 5 }}
@@ -75,6 +85,7 @@ export default function FormPesanan() {
               name="nama"
               value={formData.nama}
               onChange={handleChange}
+              data-aos="fade-right"
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -86,6 +97,7 @@ export default function FormPesanan() {
               name="alamat"
               value={formData.alamat}
               onChange={handleChange}
+              data-aos="fade-left"
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -98,6 +110,7 @@ export default function FormPesanan() {
               name="nomorTelepon"
               value={formData.nomorTelepon}
               onChange={handleChange}
+              data-aos="fade-right"
             />
           </Grid>
           <Grid item xs={12} sm={6}>
@@ -110,6 +123,7 @@ export default function FormPesanan() {
               name="email"
               value={formData.email}
               onChange={handleChange}
+              data-aos="fade-left"
             />
           </Grid>
           {/* Field baru untuk nomor meja */}
@@ -122,6 +136,7 @@ export default function FormPesanan() {
               name="nomorMeja"
               value={formData.nomorMeja}
               onChange={handleChange}
+              data-aos="fade-right"
             />
           </Grid>
           <Grid item xs={12}>

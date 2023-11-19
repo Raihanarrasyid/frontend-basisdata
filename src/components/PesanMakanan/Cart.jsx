@@ -47,11 +47,6 @@ export default function Cart() {
     setLoading(false);
   }, [cart.cart, refresh]);
 
-  const handleRemoveFromCart = (item) => {
-    cart.removeFromCart(item);
-    setRefresh((prevRefresh) => !prevRefresh);
-  };
-
   return (
     <Box className="my-5">
       {loading ? (
@@ -102,6 +97,7 @@ export default function Cart() {
                 variant="contained"
                 color="success"
                 onClick={handleCheckout}
+                disabled={cartItems.length === 0}
               >
                 Checkout
               </Button>
@@ -143,7 +139,7 @@ export default function Cart() {
               <Box className="my-5 p-52 card w-4/5 mx-auto flex justify-center gap-5 items-center text-white">
                 <Typography
                   data-aos="fade"
-                  variant="h2"
+                  variant="h3"
                   className="text-white text-center my-5"
                 >
                   Tidak ada barang di keranjang
