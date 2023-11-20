@@ -5,6 +5,7 @@ import logo from "../../assets/logo.webp";
 import { useNavigate } from "react-router-dom";
 import { useRestaurantStore } from "../../stores/appStore";
 import { useEffect } from "react";
+import axios from "axios";
 
 const items = [
   {
@@ -67,10 +68,10 @@ export default function Header() {
   const navigate = useNavigate();
   const store = useRestaurantStore();
   useEffect(() => {
-    // axios.get(`http://127.0.0.1:3001/menu/all`).then((res) => {
-    //   store.setMenus(res.data);
-    // });
-    store.setMenus(items);
+    axios.get(`http://127.0.0.1:3001/menu/all`).then((res) => {
+      store.setMenus(res.data);
+    });
+    // store.setMenus(items);
   }, []);
   return (
     <header className="bg-sky-50">

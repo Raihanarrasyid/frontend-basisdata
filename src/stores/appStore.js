@@ -45,3 +45,15 @@ export const useCartStore = create(
     }
   )
 );
+
+const useAuthStore = create(
+  persist(
+    (set) => ({
+      token: null,
+      setToken: (token) => set({ token }),
+    }),
+    {
+      name: "auth-storage",
+    }
+  )
+);
