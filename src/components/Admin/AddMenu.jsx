@@ -8,20 +8,20 @@ const CustomTextField = styled(TextField)(({ theme }) => ({
   marginBottom: "1.5rem",
   "& .MuiOutlinedInput-root": {
     "& fieldset": {
-      borderColor: "white", // Warna border
+      borderColor: "white",
     },
     "&:hover fieldset": {
-      borderColor: "white", // Warna border saat hover
+      borderColor: "white",
     },
     "&.Mui-focused fieldset": {
-      borderColor: "white", // Warna border saat focused
+      borderColor: "white",
     },
     "& input": {
-      color: "white", // Warna teks
+      color: "white",
     },
   },
   "& .MuiInputLabel-root": {
-    color: "white", // Warna label
+    color: "white",
   },
 }));
 
@@ -36,7 +36,7 @@ export default function AddMenu() {
 
   const [openSnackbar, setOpenSnackbar] = useState(false);
 
-  const API = "http://localhost:3001";
+  const API = import.meta.env.VITE_API;
 
   const handleChange = (e) => {
     const { name, value } = e.target;

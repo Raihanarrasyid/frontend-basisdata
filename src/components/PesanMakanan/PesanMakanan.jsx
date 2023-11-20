@@ -40,6 +40,7 @@ export default function PesanMakanan() {
               <div className="card-body">
                 <h2 className="card-title">{item.nama_menu}</h2>
                 <p>{item.deskripsi}</p>
+                <p>Rp. {item.harga.toLocaleString()}</p>
                 <div className="card-actions justify-end">
                   <Button
                     variant="contained"

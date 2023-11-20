@@ -19,10 +19,7 @@ export default function Cart() {
   const [toastOpen, setToastOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState("");
   const navigate = useNavigate();
-  const totalHarga = cartItems.reduce(
-    (total, item) => total + item.harga * item.kuantitas,
-    0
-  );
+  const totalHarga = cart.cartTotal();
   const handleCheckout = () => {
     if (cartItems.length !== 0) {
       navigate("/form");

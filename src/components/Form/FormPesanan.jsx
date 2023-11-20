@@ -2,25 +2,27 @@ import { Typography, TextField, Button, Box, Grid } from "@mui/material";
 import { styled } from "@mui/system";
 import React, { useEffect, useState } from "react";
 import Aos from "aos";
+import axios from "axios";
+import { useCartStore } from "../../stores/appStore";
 
 const CustomTextField = styled(TextField)(({ theme }) => ({
   marginBottom: "1.5rem",
   "& .MuiOutlinedInput-root": {
     "& fieldset": {
-      borderColor: "white", // Warna border
+      borderColor: "white",
     },
     "&:hover fieldset": {
-      borderColor: "white", // Warna border saat hover
+      borderColor: "white",
     },
     "&.Mui-focused fieldset": {
-      borderColor: "white", // Warna border saat focused
+      borderColor: "white",
     },
     "& input": {
-      color: "white", // Warna teks
+      color: "white",
     },
   },
   "& .MuiInputLabel-root": {
-    color: "white", // Warna label
+    color: "white",
   },
 }));
 
@@ -30,20 +32,27 @@ export default function FormPesanan() {
     alamat: "",
     nomorTelepon: "",
     email: "",
-    nomorMeja: "", // Tambah field nomorMeja
+    nomorMeja: "",
   });
 
-  const handleSubmit = (e) => {
+  const API = import.meta.env.VITE_API;
+  const cart = useCartStore();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Lakukan sesuatu dengan data yang diisi pada form
-    console.log(formData);
-    // Reset form setelah submit
+
+    const data = [cart.cart, formData, cart.cartTotal()];
+
+    const response = await axios.post(`${API}/pesanan/add`, data);
+
+    cart.clearCart();
+
     setFormData({
       nama: "",
       alamat: "",
       nomorTelepon: "",
       email: "",
-      nomorMeja: "", // Reset nilai nomorMeja
+      nomorMeja: "",
     });
   };
 

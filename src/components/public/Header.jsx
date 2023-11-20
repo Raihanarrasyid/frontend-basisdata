@@ -68,10 +68,9 @@ export default function Header() {
   const navigate = useNavigate();
   const store = useRestaurantStore();
   useEffect(() => {
-    axios.get(`http://127.0.0.1:3001/menu/all`).then((res) => {
+    axios.get(`${import.meta.env.VITE_API}/menu/all`).then((res) => {
       store.setMenus(res.data);
     });
-    // store.setMenus(items);
   }, []);
   return (
     <header className="bg-sky-50">
