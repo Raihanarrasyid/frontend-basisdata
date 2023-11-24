@@ -102,10 +102,10 @@ export default function Cart() {
           </Box>
           <Box>
             {cartItems.length !== 0 ? (
-              <Box className="my-5 flex gap-5 text-black flex-wrap w-4/5 mx-auto">
+              <Box className="my-5 flex gap-5 text-black justify-between flex-wrap w-4/5 mx-auto">
                 {cartItems.map((item, index) => (
                   <div
-                    className="bg-slate-50 card card-compact w-96 shadow-xl"
+                    className="bg-slate-50 card card-compact w-80 shadow-xl"
                     key={index}
                     data-aos="zoom-in"
                   >

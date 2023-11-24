@@ -12,6 +12,7 @@ import DetailMakanan from "./components/PesanMakanan/DetailMakanan";
 import Cart from "./components/PesanMakanan/Cart";
 import FormPesanan from "./components/Form/FormPesanan";
 import Dashboard from "./components/Admin/Dashboard";
+import Pesanan from "./components/Pesanan/Pesanan";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/form" element={<FormPesanan />} />
           <Route path="/manageorder" element={<h1>Manage Order</h1>} />
           <Route path="/admin" element={<Dashboard />} />
+          <Route path="/pesanan" element={<Pesanan />} />
           <Route path="*" element={<h1>Not Found</h1>} />
         </Routes>
       </BrowserRouter>

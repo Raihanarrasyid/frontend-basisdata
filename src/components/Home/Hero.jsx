@@ -1,7 +1,7 @@
 import { Box } from "@mui/system";
 import { Typography } from "@mui/material";
 import { useEffect } from "react";
-import backgroundImage from "../../assets/background.webp"; // Ganti dengan path gambar Anda
+import backgroundImage from "../../assets/background.webp";
 import { Avatar } from "@mui/material";
 import chef from "../../assets/chef.jpg";
 

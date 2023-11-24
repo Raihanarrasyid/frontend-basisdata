@@ -8,6 +8,8 @@ import {
 } from "@mui/material";
 import { useState } from "react";
 import AddMenu from "./AddMenu";
+import AddMeja from "./AddMeja";
+import ManageOrder from "./ManageOrder";
 
 export default function Dashboard() {
   const [menu, setMenu] = useState("menu");
@@ -16,7 +18,9 @@ export default function Dashboard() {
   if (menu === "menu") {
     content = <AddMenu />;
   } else if (menu === "manage") {
-    content = <h1>Manage Order</h1>;
+    content = <ManageOrder />;
+  } else if (menu === "meja") {
+    content = <AddMeja />;
   } else {
     content = null;
   }
@@ -33,6 +37,9 @@ export default function Dashboard() {
           </Button>
           <Button color="inherit" onClick={() => setMenu("manage")}>
             Kelola Pesanan
+          </Button>
+          <Button color="inherit" onClick={() => setMenu("meja")}>
+            Kelola Meja
           </Button>
         </Toolbar>
       </AppBar>

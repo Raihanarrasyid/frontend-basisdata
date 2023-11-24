@@ -24,7 +24,6 @@ export default function DetailMakanan() {
       setLoading(false);
     } else {
       setLoading(true);
-      // Lakukan logika atau tindakan yang sesuai jika item tidak ditemukan
     }
   }, [items, menuId]);
 
